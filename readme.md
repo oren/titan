@@ -11,7 +11,7 @@ What is Gremlin? a few open source tools that helps you interact with graph data
     bin/run
 
    Runs 3 Docker containers: Titan, ElasticSearch, (Indexing) and Cassandra (Storage). Port 8182 is running the HTTP server.
-   
+
 (Note - You need to have docker installed. If you are on Mac you'll need to modify index.js to use the IP you get from  boot2docker or docker-machine.)
 
 ## Interact with the Database
