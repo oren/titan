@@ -4,60 +4,68 @@
 
 This is a getting started guide for running [Titan](http://thinkaurelius.github.io/titan) graph database using Node.js and [Gremlin](http://tinkerpop.incubator.apache.org/).
 
+What is Gremlin? a few open source tools that helps you interact with graph databases. It allows you to avoid lock-in by switching seamlessly between different graph databases. Neo4j, Titan, OrientDB, and ArangoDB all support Gremlin. The Gremlin tools that you probably care about are the query language (the green gremlin) and the HTTP server (called Rexster, that's the yellow dog).
+
 ## Run Titan
 
     bin/run
 
-   Runs 3 containers: Titan, ElasticSearch, (Indexing) and Cassandra (Storage).
-
-The following ports are available:
-
-* 8182: HTTP port for REST API
-* 8183: RexPro for native access (Binary protocol)
+   Runs 3 Docker containers: Titan, ElasticSearch, (Indexing) and Cassandra (Storage). Port 8182 is running the HTTP server.
+   
+(Note - You need to have docker installed. If you are on Mac you'll need to modify index.js to use the IP you get from  boot2docker or docker-machine.)
 
 ## Interact with the Database
 
 		node index.js
 
-let's look at our database:
+let's look at the nodes (also called vertices) in our database:
 
-		curl http://localhost:8182/graphs/graph/vertices
+curl http://localhost:8182/graphs/graph/vertices
 
     {
       version: "2.5.0",
       results: [
         {
-        name: "Dave",
-        _id: 1024,
-        _type: "vertex"
-        },
-        {
-        name: "Bob",
+        name: "Alice",
         _id: 512,
         _type: "vertex"
         },
         {
-        name: "Alice",
+        name: "Bob",
         _id: 256,
-        _type: "vertex"
-        },
-        {
-        name: "Carol",
-        _id: 768,
         _type: "vertex"
         }
       ],
-      totalSize: 4,
-      queryTime: 179.934585
+      totalSize: 2,
+      queryTime: 66.634585
     }
 
-It uses [grex](https://github.com/jbmusso/grex), the [Rexster](https://github.com/tinkerpop/rexster/wiki) client for Node.js. It's a `request` wrapper that addes a few higher level functions.
+curl http://localhost:8182/graphs/graph/edges
+
+    {
+      version: "2.5.0",
+      results: [
+        {
+          since: "now",
+          _id: "ps-74-36d-e8",
+          _type: "edge",
+          _outV: 256,
+          _inV: 512,
+          _label: "likes"
+        }
+      ],
+      totalSize: 1,
+      queryTime: 179.556075
+    }
+
+
+This code uses [grex](https://github.com/jbmusso/grex), the [Rexster](https://github.com/tinkerpop/rexster/wiki) client for Node.js. It's a `request` package wrapper that addes a few higher level functions.
 
 ## Resources
 
-* [HTTP endpionts](https://github.com/tinkerpop/rexster/wiki/Basic-REST-API)
 * [Titan docs](http://s3.thinkaurelius.com/docs/titan/0.9.0-M2)
-* [Rexter client for Node.js](https://github.com/jbmusso/grex)
+* [grex](https://github.com/jbmusso/grex) - Rexter client for Node.js
 * [Rexter documentation](https://github.com/tinkerpop/rexster/wiki)
+* [Rexster HTTP endpionts](https://github.com/tinkerpop/rexster/wiki/Basic-REST-API)
 * [Docker repository](https://github.com/apobbati/titan-rexster)
 * [Gremlin google group](https://groups.google.com/forum/#!forum/gremlin-users)

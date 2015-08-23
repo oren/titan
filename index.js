@@ -11,14 +11,9 @@ var g = grex.g;
 
 var query = gremlin();
 
-var alice = g.addVertex({name:'Alice'});
-var bob = g.addVertex({name:'Bob'});
-query(alice);
-query(bob);
-g.addEdge(alice, bob, 'knows' , { since: '2014' });
-
-query(g.addVertex({ name: "Carol" }));
-query(g.addVertex({ name: "Dave" }));
+var bob = query.var(g.addVertex({ name: 'Bob' }));
+var alice = query.var(g.addVertex({ name: 'Alice' }));
+query(g.addEdge(bob, alice, 'likes', { since: 'now' }));
 
 // Send script for execution
 client.execute(query, function(err, response) {
