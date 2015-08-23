@@ -19,26 +19,10 @@ The following ports are available:
 
 It uses [grex](https://github.com/jbmusso/grex), the [Rexster](https://github.com/tinkerpop/rexster/wiki) client for Node.js. It's a `request` wrapper that addes a few higher level functions.
 
-## Misc
+## Resources
 
-**HTTP endpoints**
-
-list of all graphs
-
-    curl http://localhost:8182/graphs
-
-list of all vertices
-
-    curl http://localhost:8182/graphs/graph/vertices
-
-** Titan documentation **  
-http://s3.thinkaurelius.com/docs/titan/0.9.0-M2/
-
-** Rexter client for Node.js **  
-https://github.com/jbmusso/grex
-
-** Rexter documentation**  
-https://github.com/tinkerpop/rexster/wiki
-
-** Docker repository **  
-https://github.com/apobbati/titan-rexster
+* [HTTP endpionts](https://github.com/tinkerpop/rexster/wiki/Basic-REST-API)
+* [Titan docs](http://s3.thinkaurelius.com/docs/titan/0.9.0-M2)
+* [Rexter client for Node.js](https://github.com/jbmusso/grex)
+* [Rexter documentation](https://github.com/tinkerpop/rexster/wiki)
+* [Docker repository](https://github.com/apobbati/titan-rexster)
