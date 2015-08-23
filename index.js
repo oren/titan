@@ -5,7 +5,7 @@ var options = {
   graph: 'graph'
 }
 var client = grex.createClient(options);
-// Init a couple shortcuts
+// shortcuts
 var gremlin = grex.gremlin;
 var g = grex.g;
 
@@ -20,7 +20,7 @@ g.addEdge(alice, bob, 'knows' , { since: '2014' });
 query(g.addVertex({ name: "Carol" }));
 query(g.addVertex({ name: "Dave" }));
 
-// 3. Send script for execution, and return a raw response object with a 'results' Array property.
+// Send script for execution
 client.execute(query, function(err, response) {
   if (err) {
     return console.error(err);
@@ -28,11 +28,3 @@ client.execute(query, function(err, response) {
 
   console.log('response:', response);
 })
-
-// {
-//   success: true,
-//   results: [ { name: 'Dave', _id: 1024, _type: 'vertex' } ],
-//   version: '2.5.0',
-//   queryTime: 7478.908961
-// }
-
