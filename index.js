@@ -1,7 +1,8 @@
 var grex = require('grex');
 var options = {
   host: 'localhost',
-  port: 8182
+  port: 8182,
+  graph: 'graph'
 }
 var client = grex.createClient(options);
 // Init a couple shortcuts
