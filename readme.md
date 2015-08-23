@@ -8,7 +8,9 @@ What is Gremlin? a few open source tools that helps you interact with graph data
 
 ## Run Titan
 
-    bin/run
+`git clone https://github.com/oren/titan.git`  
+`cd titan`  
+`bin/run`
 
    Runs 3 Docker containers: Titan, ElasticSearch, (Indexing) and Cassandra (Storage). Port 8182 is running the HTTP server.
 
@@ -16,48 +18,52 @@ What is Gremlin? a few open source tools that helps you interact with graph data
 
 ## Interact with the Database
 
-		node index.js
+`node index.js`
 
 let's look at the nodes (also called vertices) in our database:
 
-curl http://localhost:8182/graphs/graph/vertices
 
+`curl http://localhost:8182/graphs/graph/vertices`
+
+```js
+{
+  version: "2.5.0",
+  results: [
     {
-      version: "2.5.0",
-      results: [
-        {
-        name: "Alice",
-        _id: 512,
-        _type: "vertex"
-        },
-        {
-        name: "Bob",
-        _id: 256,
-        _type: "vertex"
-        }
-      ],
-      totalSize: 2,
-      queryTime: 66.634585
-    }
-
-curl http://localhost:8182/graphs/graph/edges
-
+    name: "Alice",
+    _id: 512,
+    _type: "vertex"
+    },
     {
-      version: "2.5.0",
-      results: [
-        {
-          since: "now",
-          _id: "ps-74-36d-e8",
-          _type: "edge",
-          _outV: 256,
-          _inV: 512,
-          _label: "likes"
-        }
-      ],
-      totalSize: 1,
-      queryTime: 179.556075
+    name: "Bob",
+    _id: 256,
+    _type: "vertex"
     }
+  ],
+  totalSize: 2,
+  queryTime: 66.634585
+}
+```
 
+`curl http://localhost:8182/graphs/graph/edges`
+
+```js
+{
+  version: "2.5.0",
+  results: [
+    {
+      since: "now",
+      _id: "ps-74-36d-e8",
+      _type: "edge",
+      _outV: 256,
+      _inV: 512,
+      _label: "likes"
+    }
+  ],
+  totalSize: 1,
+  queryTime: 179.556075
+}
+```
 
 This code uses [grex](https://github.com/jbmusso/grex), the [Rexster](https://github.com/tinkerpop/rexster/wiki) client for Node.js. It's a `request` package wrapper that addes a few higher level functions.
 
