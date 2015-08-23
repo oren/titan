@@ -9,7 +9,7 @@ var gremlin = grex.gremlin;
 var g = grex.g;
 
 // 1. Initialize a Gremlin object to work with
-// var query = gremlin(g.v(1)); // query.script === 'g.v(1)'
+var query = gremlin(g.v(1)); // query.script === 'g.v(1)'
 
 // 2. Initialize a Gremlin object to work with
 // var gremlin = client.gremlin();
