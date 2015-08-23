@@ -5,8 +5,8 @@ This is a getting started guide for running [Titan](http://thinkaurelius.github.
 ## Run Titan
 
     bin/run
-    
-   Runs 3 containers: Titan, ElasticSearch, (Indexing) and Cassandra (Storage). 
+
+   Runs 3 containers: Titan, ElasticSearch, (Indexing) and Cassandra (Storage).
 
 The following ports are available:
 
