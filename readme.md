@@ -1,18 +1,18 @@
-# Titan Database with Node.js
+# Getting started with Titan Database and Node.js
 
 ![Gremlin](http://tinkerpop.incubator.apache.org/images/tinkerpop3-splash.png)
 
-This is a getting started guide for running [Titan](http://thinkaurelius.github.io/titan) graph database using Node.js and [Gremlin](http://tinkerpop.incubator.apache.org/).
+This is a getting started guide for running a [Titan](http://thinkaurelius.github.io/titan) graph database using Node.js and [Gremlin](http://tinkerpop.incubator.apache.org/).
 
-What is Gremlin? a few open source tools that helps you interact with graph databases. It allows you to avoid lock-in by switching seamlessly between different graph databases. Neo4j, Titan, OrientDB, and ArangoDB all support Gremlin. The Gremlin tools that you probably care about are the query language (the green gremlin) and the HTTP server (called Rexster, that's the yellow dog).
+What is Gremlin? A few open source tools that help you interact with graph databases. It allows you to avoid lock-in by switching seamlessly between different graph databases. Neo4j, Titan, OrientDB, and ArangoDB all support it. The Gremlin tools that you probably care about are the query language (the green creature in the picture above) and the HTTP server (called Rexster, that's the yellow dog).
 
 ## Run Titan
 
-`git clone https://github.com/oren/titan.git`  
-`cd titan`  
+`git clone https://github.com/oren/titan.git`
+`cd titan`
 `bin/run`
 
-   Runs 3 Docker containers: Titan, ElasticSearch, (Indexing) and Cassandra (Storage). Port 8182 is running the HTTP server.
+Runs 3 Docker containers: Titan, ElasticSearch, (Indexing) and Cassandra (Storage). The HTTP server runs on port 8182.
 
 (Note - You need to have docker installed. If you are on Mac you'll need to modify index.js to use the IP you get from  boot2docker or docker-machine.)
 
@@ -20,10 +20,7 @@ What is Gremlin? a few open source tools that helps you interact with graph data
 
 `node index.js`
 
-let's look at the nodes (also called vertices) in our database:
-
-
-`curl http://localhost:8182/graphs/graph/vertices`
+Let's look at the nodes (also called vertices) in our database: `curl http://localhost:8182/graphs/graph/vertices`
 
 ```js
 {
@@ -45,7 +42,7 @@ let's look at the nodes (also called vertices) in our database:
 }
 ```
 
-`curl http://localhost:8182/graphs/graph/edges`
+And now for the edges: `curl http://localhost:8182/graphs/graph/edges`
 
 ```js
 {
@@ -65,7 +62,14 @@ let's look at the nodes (also called vertices) in our database:
 }
 ```
 
-This code uses [grex](https://github.com/jbmusso/grex), the [Rexster](https://github.com/tinkerpop/rexster/wiki) client for Node.js. It's a `request` package wrapper that addes a few higher level functions.
+This code uses [grex](https://github.com/jbmusso/grex), the [Rexster](https://github.com/tinkerpop/rexster/wiki) client for Node.js. It's a `request` package wrapper that adds a few higher level functions.
+
+The following lines are all that are required to create two vertices and an edge:
+```js
+var bob = query.var(g.addVertex({ name: 'Bob' }));
+var alice = query.var(g.addVertex({ name: 'Alice' }));
+query(g.addEdge(bob, alice, 'likes', { since: 'now' }));
+```
 
 ## Resources
 
