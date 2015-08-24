@@ -8,8 +8,8 @@ What is Gremlin? A few open source tools that help you interact with graph datab
 
 ## Run Titan
 
-`git clone https://github.com/oren/titan.git`
-`cd titan`
+`git clone https://github.com/oren/titan.git`  
+`cd titan`  
 `bin/run`
 
 Runs 3 Docker containers: Titan, ElasticSearch, (Indexing) and Cassandra (Storage). The HTTP server runs on port 8182.
